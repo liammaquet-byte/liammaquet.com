@@ -1,0 +1,212 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+---
+<BaseLayout active="Graphics" title="Orthographic Projection and Auxiliary Views">
+  <Hero title="Orthographic Projection & Auxiliary Views" subtitle="From orthographic projection to true shape" />
+  <article class="container learning-page">
+    <header class="lesson-intro card">
+      <p class="eyebrow">Technical Graphics</p>
+      <h1>From Orthographic Projection to True Shape</h1>
+      <p>Technical graphics/ technical drawing/ Design and Communication Graphics/ Applied Graphics and Design (whatever you wish to call it!) is fundamentally about describing three-dimensional geometry using two-dimensional views.</p>
+      <p>When an object is aligned conveniently with the principal planes of projection, this is relatively straightforward. A front view, plan and end view can describe most of the important geometry. The difficulty begins when lines and surfaces are inclined in three-dimensional space.</p>
+      <p>A line may look shorter than it really is. A rectangular surface may appear as an irregular quadrilateral. An angle that is 90° in space may not appear as 90° on the drawing.</p>
+      <p>These are not errors in the drawing. They are consequences of projection distortion.</p>
+      <p>Understanding how to move systematically from an ordinary orthographic view to a view showing true length, edge view, point view or true shape is therefore one of the most important skills in plane and descriptive geometry.</p>
+    </header>
+
+    <div class="image-placeholder"><span>Image / diagram placeholder 1</span></div>
+
+    <section class="lesson-section">
+      <h2><span>1</span> Orthographic Projection: Looking Perpendicular to a Plane</h2>
+      <p>Orthographic projection can be imagined as viewing an object from a very large distance, so that all of the lines of sight are parallel. That distance, in theory, is infinite.</p>
+      <p>More precisely, the projection lines used to create the drawing are perpendicular to the plane onto which the view is projected.</p>
+      <p>Consider a simple point in space. If we project that point perpendicularly onto a horizontal plane, we obtain its position in plan. If we project it onto a vertical plane, we obtain its position in elevation.</p>
+      <p>The same principle applies to every point, line and surface making up a three-dimensional object.</p>
+      <aside class="key-idea"><strong>A useful way of thinking about an orthographic drawing is therefore:</strong><br />Every view is the result of looking perpendicular to a particular plane of projection.</aside>
+      <p>The geometry that appears in that view depends entirely on how the object is oriented relative to that plane.</p>
+    </section>
+
+    <div class="image-placeholder"><span>Image / diagram placeholder 2</span></div>
+
+    <section class="lesson-section">
+      <h2><span>2</span> First-Angle Projection</h2>
+      <p>In first-angle projection, the object is imagined lying between the observer and the plane of projection, and the points projected from the spectator – through each point – and onto the plan behind.</p>
+      <p>When the projection planes are unfolded to form the drawing sheet, this produces the characteristic arrangement of views:</p>
+      <ul><li>the plan is positioned below the front elevation;</li><li>a view from the left is positioned to the right of the front elevation;</li><li>a view from the right is positioned to the left.</li></ul>
+      <p>This arrangement sometimes feels counter-intuitive at first. Rather than memorising view positions alone, it is more useful to understand the underlying projection system.</p>
+      <p>Imagine the object inside a transparent box. Each view is projected through the object onto the appropriate face of the box. The box is then unfolded until all of its faces lie on the same flat drawing surface.</p>
+      <aside class="key-idea"><strong>Key idea:</strong> The location of a view on the sheet tells us the direction from which the object has been projected.</aside>
+    </section>
+
+    <div class="image-placeholder"><span>Image / diagram placeholder 3</span></div>
+
+    <section class="lesson-section">
+      <h2><span>3</span> What a Projection Does to Geometry</h2>
+      <p>The central concept behind the rest of this topic is foreshortening.</p>
+      <p>Suppose a line AB has a true length of 80 mm.</p>
+      <p>If AB is parallel to the plane onto which it is being projected, its projection will also measure 80 mm.</p>
+      <p>If AB is inclined to that plane, its projected length will be shorter.</p>
+      <p>The line itself has not changed. Only its appearance in that particular projection has changed.</p>
+      <aside class="key-idea">A line appears in <strong>true length</strong> in a view when the line is parallel to the plane of projection.<br /><br />A plane surface appears in <strong>true shape</strong> when the surface is parallel to the plane of projection.</aside>
+      <p>These two principles explain much of what follows.</p>
+    </section>
+
+    <div class="image-placeholder"><span>Image / diagram placeholder 4</span></div>
+
+    <section class="lesson-section">
+      <h2><span>4</span> Why the Principal Views Are Sometimes Not Enough</h2>
+      <p>The normal front, plan and end views work particularly well when important features are parallel or perpendicular to the principal projection planes.</p>
+      <p>Real geometry is rarely that convenient.</p>
+      <p>Consider a plate inclined relative to the horizontal plane. Its plan will be foreshortened. Depending on its orientation, its elevation may also fail to show its true shape.</p>
+      <p>If we attempted to dimension the surface using one of these distorted views, we would not be working with its actual geometry.</p>
+      <p>We need another direction of view.</p>
+      <p>This is the purpose of an auxiliary view.</p>
+      <p>An auxiliary view is still an orthographic projection. The difference is simply that we introduce an additional projection plane at a useful orientation rather than restricting ourselves to the principal horizontal and vertical planes.</p>
+    </section>
+
+    <div class="image-placeholder"><span>Image / diagram placeholder 5</span></div>
+
+    <section class="lesson-section">
+      <h2><span>5</span> First Auxiliary Views</h2>
+      <p>A first auxiliary view (often called a primary auxiliary view) is projected directly from one of the principal orthographic views.</p>
+      <p>The auxiliary plane is selected to reveal information that cannot be obtained directly from the original views.</p>
+      <p>The process can initially seem procedural: draw a new xy line, project perpendicular to it, transfer distances, and join the resulting points.</p>
+      <p>However, it is much easier to understand if you first ask:</p>
+      <aside class="key-idea"><strong>What do I want the next view to show?</strong></aside>
+      <p>If the objective is to obtain the true length of a line, we need to create a view in which that line is parallel to the new projection plane.</p>
+      <p>If the objective is to obtain the true shape of an inclined surface, we need a projection plane parallel to that surface.</p>
+      <p>The construction method follows from the geometry, not the other way around.</p>
+      <h3>Transferring information between views</h3>
+      <p>When constructing an auxiliary view, one coordinate is established by projection from the adjacent view, while the remaining coordinate is transferred from the corresponding previous view.</p>
+      <p>This is why xy lines (sometimes described as fold lines) are important. They establish the relationship between adjacent projection planes.</p>
+      <p>A useful habit is to keep asking: <strong>Which distance is being preserved as I move from this view to the next?</strong></p>
+      <p>Thinking in terms of coordinates and distances is much more reliable than attempting to memorise individual constructions.</p>
+    </section>
+
+    <div class="image-placeholder"><span>Image / diagram placeholder 6</span></div>
+
+    <section class="lesson-section">
+      <h2><span>6</span> True Length of a Line</h2>
+      <p>A line that is oblique in three-dimensional space may appear foreshortened in both the plan and elevation.</p>
+      <p>Neither view therefore gives its actual length.</p>
+      <p>To obtain the true length (TL), we construct a view whose projection plane is parallel to the line.</p>
+      <aside class="formula-card">projected length = true length</aside>
+      <p>This is a particularly important transition in descriptive geometry because true length is often not the final objective. Instead, it provides the orientation required to obtain another special view.</p>
+    </section>
+
+    <div class="image-placeholder"><span>Image / diagram placeholder 7</span></div>
+
+    <section class="lesson-section">
+      <h2><span>7</span> From True Length to Point View</h2>
+      <p>Now imagine changing the viewing direction again.</p>
+      <p>If we look along the axis of a line, its two endpoints lie on the same line of sight.</p>
+      <p>The line therefore appears as a single point.</p>
+      <p>This is called the point view of a line.</p>
+      <aside class="process-card"><span>Oblique line</span><b>→</b><span>True Length</span><b>→</b><span>Point View</span></aside>
+      <p>To obtain the point view, first obtain a view showing the line in true length. A subsequent auxiliary view is then projected in the direction of the line.</p>
+      <p>A point view may initially appear to be an abstract construction, but it is extremely useful. Once a line has been reduced to a point, spatial relationships involving that line can often be determined much more easily.</p>
+    </section>
+
+    <div class="image-placeholder"><span>Image / diagram placeholder 8</span></div>
+
+    <section class="lesson-section">
+      <h2><span>8</span> Edge Views of Planes</h2>
+      <p>The same reasoning applies to surfaces.</p>
+      <p>If we look along a plane, rather than perpendicular to it, the surface collapses into a line.</p>
+      <p>This is its edge view.</p>
+      <div class="process-card vertical"><span>Looking perpendicular to the plane → <strong>True Shape</strong></span><span>Looking along the plane → <strong>Edge View</strong></span></div>
+      <p>These are complementary views of the same geometry.</p>
+      <p>The edge view is especially important when dealing with an oblique plane (a plane that is inclined to all of the principal planes of projection).</p>
+      <p>Such a plane will not normally appear in true shape or edge view in any principal orthographic view.</p>
+      <p>We therefore have to create the required orientation using auxiliary projections.</p>
+    </section>
+
+    <div class="image-placeholder"><span>Image / diagram placeholder 9</span></div>
+
+    <section class="lesson-section">
+      <h2><span>9</span> Second Auxiliary Views</h2>
+      <p>Sometimes one auxiliary view is not enough.</p>
+      <p>This occurs particularly when dealing with oblique surfaces.</p>
+      <p>The first auxiliary view is used to place the geometry into a useful intermediate orientation (commonly an edge view). A second auxiliary view can then be projected from this new orientation to obtain the required final result.</p>
+      <aside class="process-card"><span>Principal views</span><b>→</b><span>First Auxiliary</span><b>→</b><span>Edge View</span><b>→</b><span>Second Auxiliary</span><b>→</b><span>True Shape</span></aside>
+      <p>The second auxiliary view is therefore not a fundamentally different type of projection. It is simply an auxiliary projection constructed from an existing auxiliary view rather than directly from a principal view.</p>
+      <p>This is one of the most important ideas in the topic.</p>
+      <p>Do not think of first and second auxiliaries as separate drawing techniques. Think of them as a sequence of carefully chosen viewing directions.</p>
+      <p>Each projection puts the geometry into a more useful orientation for the next projection.</p>
+    </section>
+
+    <div class="image-placeholder"><span>Image / diagram placeholder 10</span></div>
+
+    <section class="lesson-section">
+      <h2><span>10</span> Obtaining the True Shape of an Oblique Surface</h2>
+      <p>Consider an oblique triangular plane ABC.</p>
+      <p>Because the plane is oblique to the principal planes, neither the plan nor elevation shows its true shape.</p>
+      <p>Our objective is to eventually look perpendicular to ABC.</p>
+      <p>Doing this directly from the principal views is difficult because its spatial orientation is not yet obvious.</p>
+      <p>Instead, we proceed in stages.</p>
+      <p>First, construct an auxiliary view in which plane ABC appears edge-on.</p>
+      <p>Once the plane appears as a line, its orientation has effectively been simplified.</p>
+      <p>A second auxiliary projection is then constructed perpendicular to that edge view.</p>
+      <p>The resulting view is looking directly at the surface, so ABC appears in its true shape.</p>
+      <aside class="key-idea">To obtain an <strong>edge view</strong>, look along the plane.<br />To obtain <strong>true shape</strong>, look perpendicular to the plane.</aside>
+    </section>
+
+    <div class="image-placeholder"><span>Image / diagram placeholder 11</span></div>
+
+    <section class="lesson-section">
+      <h2><span>11</span> Connecting the Ideas</h2>
+      <p>At this stage, the various constructions should begin to look less like isolated procedures.</p>
+      <p>They are all consequences of changing the relationship between the geometry and the projection plane.</p>
+      <div class="responsive-table"><table><thead><tr><th>Geometry</th><th>Relationship to projection plane</th><th>Appearance</th></tr></thead><tbody><tr><td>Line</td><td>Parallel to projection plane</td><td>True length</td></tr><tr><td>Line</td><td>Perpendicular to projection plane</td><td>Point view</td></tr><tr><td>Plane</td><td>Parallel to projection plane</td><td>True shape</td></tr><tr><td>Plane</td><td>Perpendicular to projection plane</td><td>Edge view</td></tr></tbody></table></div>
+      <p>This table is worth understanding rather than simply memorising.</p>
+      <p>For example, if a line appears as a point, the viewing direction must be along that line. Similarly, if a surface appears as an edge, the viewing direction lies along the surface.</p>
+      <p>The appearance of the geometry therefore tells us something about its orientation in three-dimensional space.</p>
+    </section>
+
+    <div class="image-placeholder"><span>Image / diagram placeholder 12</span></div>
+
+    <section class="lesson-section">
+      <h2><span>12</span> A Better Way to Approach Auxiliary-View Problems</h2>
+      <p>When faced with a new problem, avoid beginning immediately with construction lines.</p>
+      <p>First identify the geometric objective.</p>
+      <div class="question-card">
+        <p>What am I trying to obtain? true length, point view, edge view or true shape?</p>
+        <p>What relationship must the feature have with the new projection plane to produce that result?</p>
+        <p>Can that relationship be obtained directly from a principal view?</p>
+        <p>If not, what intermediate auxiliary view will create the orientation I need?</p>
+        <p>Which distances must be transferred from the preceding view?</p>
+      </div>
+      <p>This approach turns an auxiliary-view problem from a remembered sequence of steps into a problem in spatial reasoning.</p>
+    </section>
+
+    <section class="lesson-section">
+      <h2><span>13</span> One Geometry, Several Views</h2>
+      <p>A particularly useful exercise is to follow a single piece of geometry through several projections.</p>
+      <p>Take an oblique rectangular plate.</p>
+      <p>In the original plan it may appear as a distorted quadrilateral.</p>
+      <p>After the first auxiliary projection it can appear as a straight line (its edge view).</p>
+      <p>After the second auxiliary projection it becomes a rectangle (its true shape).</p>
+      <p>Nothing about the physical plate has changed.</p>
+      <p>Only the direction from which we are viewing it has changed.</p>
+      <aside class="key-idea">Try not think of an auxiliary view as changing the object. It changes your viewpoint until the geometric information you need becomes visible.</aside>
+    </section>
+
+    <div class="image-placeholder"><span>Image / diagram placeholder 13</span></div>
+
+    <section class="lesson-section further-reading">
+      <h2>Further Reading</h2>
+      <p>For a useful open-access introduction, the University of Washington’s Engineering Graphics and Design material provides a clear discussion of inclined and oblique surfaces and explains why an oblique surface normally requires primary and secondary auxiliary views.</p>
+      <a class="button" href="https://uw.pressbooks.pub/enggraphics/chapter/auxiliary-views/" target="_blank" rel="noopener">University of Washington: Auxiliary Views ↗</a>
+      <p class="muted">Students should use these resources to supplement worked examples rather than treating auxiliary projection as a collection of constructions to memorise.</p>
+    </section>
+
+    <section class="key-takeaway">
+      <p class="eyebrow">Key Takeaway</p>
+      <h2>One underlying principle</h2>
+      <p>The appearance of geometry in an orthographic view depends on its orientation relative to the plane of projection.</p>
+      <div class="takeaway-grid"><span>parallel line → <strong>true length</strong></span><span>perpendicular line → <strong>point</strong></span><span>parallel plane → <strong>true shape</strong></span><span>perpendicular plane → <strong>edge</strong></span></div>
+      <p>Auxiliary projection is simply the process of introducing new viewing planes until one of these useful relationships is achieved.</p>
+    </section>
+  </article>
+</BaseLayout>
