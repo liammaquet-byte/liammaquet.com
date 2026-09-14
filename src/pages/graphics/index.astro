@@ -6,11 +6,19 @@ const base = import.meta.env.BASE_URL;
 <BaseLayout active="Graphics" title="Graphics">
   <Hero title="Graphics" subtitle="Technical graphics, descriptive geometry and spatial reasoning" />
   <section class="container">
-    <article class="card feature-card resource-card">
-      <p class="eyebrow">Geometry & projection</p>
-      <h2>Orthographic Projection and Auxiliary Views</h2>
-      <p>Move from ordinary orthographic views to true length, point view, edge view and true shape by understanding the geometry behind auxiliary projection.</p>
-      <a class="paper-link" href={`${base}graphics/orthographic-projection-auxiliary-views/`}>Read resource →</a>
-    </article>
+    <div class="education-grid">
+      <article class="card feature-card">
+        <p class="eyebrow">Projection & descriptive geometry</p>
+        <h2>Orthographic Projection & Auxiliary Views</h2>
+        <p>Develop a geometric understanding of orthographic projection and move systematically toward true length, point view, edge view and true shape using auxiliary views.</p>
+        <a class="paper-link" href={`${base}graphics/orthographic-projection-auxiliary-views/`}>Open resource →</a>
+      </article>
+
+      <article class="card feature-card resource-coming-soon">
+        <p class="eyebrow">More resources</p>
+        <h2>Additional graphics topics</h2>
+        <p class="muted">Further technical graphics resources can be added here as the section grows.</p>
+      </article>
+    </div>
   </section>
 </BaseLayout>
