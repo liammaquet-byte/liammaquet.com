@@ -161,3 +161,25 @@ Example:
 ```
 
 An optional `"url"` can be added whenever there is a preferred public destination. To hide an ORCID item from the site, add a matching title with `"hidden": true`.
+
+
+## Design/content revision (v4)
+
+This revision adds:
+- grouped **Tools** navigation for the QCA Calculator and QR Code Generator;
+- a site-wide **Search** page linked from the top-right navigation;
+- a new **First Year Teaching** placeholder page;
+- a new **Graphics** section with an initial **Orthographic Projection and Auxiliary Views** learning resource;
+- responsive image-rendered CV pages for reliable iPad/mobile centering, while retaining **View full CV**;
+- properly sized native colour controls in the QR Code Generator.
+
+### CV maintenance
+The inline CV view is rendered from `public/assets/cv-pages/`. When replacing the PDF in `public/downloads/Liam-Maquet-CV.pdf`, regenerate the page images as well so the inline view matches the PDF.
+
+### Search maintenance
+The static search index currently lives in `src/pages/search.astro`. Add a search entry there when adding a major new page. Research records are incorporated into that index at build time.
+
+
+## Navigation refinement (v5)
+
+The **Graphics** and **Tools** sections now use clean top-level navigation links rather than dropdown menus. Each opens its own landing page, which is the intended place to browse resources/tools as those sections grow.
