@@ -1,0 +1,4 @@
+{
+  "_instructions": "Entries here override ORCID/cache items by exact title. Add new records with a title and optional year/type/authors/url. Set hidden:true to suppress an item.",
+  "items": []
+}

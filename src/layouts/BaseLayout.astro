@@ -1,0 +1,52 @@
+---
+import '../styles/global.css';
+const { title = 'Liam Maquet', description = 'Assistant Professor in Technology Education', active = '' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const nav = [
+  ['Home',''],
+  ['Curriculum Vitae','cv/'],
+  ['Education','education/'],
+  ['Research','research/'],
+  ['Teaching','teaching/'],
+  ['QCA Calculator','qca-calculator/'],
+  ['QR Code Generator','qr-code-generator/']
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0a0a" />
+    <title>{title} | Liam Maquet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href={base} aria-label="Liam Maquet home">
+        <span class="brand-mark">LM</span><span class="brand-name">LIAM MAQUET</span>
+      </a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav id="main-nav" class="main-nav" aria-label="Primary">
+        {nav.map(([label,path]) => <a class:list={{active: active===label}} href={`${base}${path}`}>{label}</a>)}
+      </nav>
+    </header>
+    <main><slot /></main>
+    <footer class="site-footer">
+      <p>© {new Date().getFullYear()} Liam Maquet</p>
+      <div><a href="mailto:Liam.Maquet@ul.ie">Email</a><a href="https://orcid.org/0000-0002-7843-6424">ORCID</a><a href="https://www.linkedin.com/in/liam-maquet/">LinkedIn</a></div>
+    </footer>
+    <script is:inline>
+      const btn = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.main-nav');
+      btn?.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        nav?.classList.toggle('open', !open);
+      });
+    </script>
+  </body>
+</html>

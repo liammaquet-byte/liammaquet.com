@@ -1,0 +1,318 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout active="QCA Calculator" title="QCA Calculator">
+  <section class="utility-wrap">
+    <h1>QCA / QCS Calculator</h1>
+    <p class="muted">All calculations run in your browser. Nothing is uploaded or stored.</p>
+
+    <div id="page1" class="form-card">
+      <h2 style="margin:0 0 10px;font-size:18px">Page 1 - Current values</h2>
+      <div class="row">
+        <div><label for="year">Year</label><select id="year"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select><div class="tiny" id="factorNote"></div></div>
+        <div><label for="nonQ">Non-Q hours</label><input id="nonQ" type="number" min="0" step="any" placeholder="0" /></div>
+      </div>
+      <div class="row">
+        <div><label for="existingQCS">Existing QCS (to-date)</label><input id="existingQCS" type="number" step="any" placeholder="0" /></div>
+        <div><label for="existingAtt">Existing Att hours (to-date)</label><input id="existingAtt" type="number" step="any" placeholder="0" /></div>
+      </div>
+      <div class="actions"><button id="toPage2">Next → Page 2</button><button id="resetAll1">Reset all</button></div>
+    </div>
+
+    <div id="page2" class="form-card" hidden style="margin-top:14px">
+      <h2 style="margin:0 0 10px;font-size:18px">Page 2 - This semester</h2>
+      <div class="modules">
+        <p class="muted">Start with 1 module and add more only if you need them.</p>
+        <table aria-label="Modules table"><thead><tr><th>Module</th><th>Grade</th><th>Credits</th><th>Action</th></tr></thead><tbody id="moduleBody"></tbody></table>
+        <div class="actions"><button id="addModuleBtn">+ Add module</button><button id="backTo1">← Back to Page 1</button><button class="primary" id="calcBtn">Calculate</button><button id="resetMods">Clear Page 2</button></div>
+        <div id="messages"></div>
+        <div class="resultGrid">
+          <div class="resultBox"><div class="k">Total semester credits</div><div class="v" id="totalCredits">—</div></div>
+          <div class="resultBox"><div class="k">Total semester QCS</div><div class="v" id="semesterQPV">—</div></div>
+          <div class="resultBox"><div class="k">Semester QCA</div><div class="v" id="semesterQCA">—</div></div>
+        </div>
+        <hr style="border:0;border-top:1px solid #ddd;margin:16px 0" />
+        <strong>Key results</strong>
+        <div class="resultGrid">
+          <div class="resultBox primary"><div class="k">Current QCA</div><div class="v" id="newQCA">—</div></div>
+          <div class="resultBox"><div class="k">QCS</div><div class="v" id="newQCS">—</div></div>
+          <div class="resultBox"><div class="k">Att hours</div><div class="v" id="newAtt">—</div></div>
+        </div>
+        <div id="residualWrap" class="resultGrid" style="display:none">
+          <div class="resultBox"><div class="k">Residual QCA</div><div class="tiny">If F grades were C3</div><div class="v" id="residualQCA">—</div></div>
+          <div id="residualNote" class="tiny" style="display:none">Shown because one or more modules have a grade of F.</div>
+        </div>
+        <p class="tiny">Grade values: A1=4, A2=3.6, B1=3.2, B2=3, B3=2.8, C1=2.6, C2=2.4, C3=2, D1=1.6, D2=1.2, F=0.</p>
+        <details class="card"><summary><strong>Disclaimer</strong></summary><p class="muted">This calculator is a helpful reference tool and is not officially affiliated with, endorsed by, or maintained by any academic institution. Users should confirm results against official institutional regulations.</p></details>
+      </div>
+    </div>
+  </section>
+  <script is:inline>
+  const gradeToValue = new Map([
+    ["A1", 4.0],
+    ["A2", 3.6],
+    ["B1", 3.2],
+    ["B2", 3.0],
+    ["B3", 2.8],
+    ["C1", 2.6],
+    ["C2", 2.4],
+    ["C3", 2.0],
+    ["D1", 1.6],
+    ["D2", 1.2],
+    ["F",  0.0]
+  ]);
+
+  function factorFromYear(year) {
+    return (year === 1 || year === 2) ? 1 : 2;
+  }
+
+  function fmt(x, decimals=2) {
+    if (!Number.isFinite(x)) return "—";
+    return x.toFixed(decimals);
+  }
+
+  function numVal(id) {
+    const el = document.getElementById(id);
+    return el.value === "" ? 0 : Number(el.value);
+  }
+
+  function setMsg(html) {
+    document.getElementById("messages").innerHTML = html || "";
+  }
+
+  const page1 = document.getElementById("page1");
+  const page2 = document.getElementById("page2");
+  const moduleBody = document.getElementById("moduleBody");
+  const addModuleBtn = document.getElementById("addModuleBtn");
+
+  let moduleCount = 0;
+
+  const gradeOptions = `
+    <option value="">(blank)</option>
+    ${Array.from(gradeToValue.keys()).map(g => `<option value="${g}">${g}</option>`).join("")}
+  `;
+
+  function showPage(n) {
+    const is1 = n === 1;
+    page1.hidden = !is1;
+    page2.hidden = is1;
+  }
+
+  document.getElementById("toPage2").addEventListener("click", () => showPage(2));
+  document.getElementById("backTo1").addEventListener("click", () => showPage(1));
+
+  function updateFactorNote() {
+    const y = Number(document.getElementById("year").value);
+    const f = factorFromYear(y);
+    document.getElementById("factorNote").textContent = `Factor = ${f} (Year ${y})`;
+  }
+
+  function attachLiveCalc(el) {
+    el.addEventListener("input", calculate);
+    el.addEventListener("change", calculate);
+  }
+
+  function renumberModules() {
+    const rows = moduleBody.querySelectorAll("tr");
+    rows.forEach((row, index) => {
+      const n = index + 1;
+      row.dataset.index = n;
+      row.querySelector(".moduleLabel").textContent = `Module ${n}`;
+      row.querySelector(".gradeSelect").setAttribute("aria-label", `Module ${n} grade`);
+      row.querySelector(".creditsInput").setAttribute("aria-label", `Module ${n} credits`);
+    });
+    moduleCount = rows.length;
+  }
+
+  function addModuleRow(grade = "", credits = "") {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td><strong class="moduleLabel">Module</strong></td>
+      <td>
+        <select class="gradeSelect">
+          ${gradeOptions}
+        </select>
+      </td>
+      <td>
+        <input class="creditsInput" type="number" min="0" step="any" placeholder="0" />
+      </td>
+      <td>
+        <button type="button" class="danger removeModuleBtn">Remove</button>
+      </td>
+    `;
+
+    const gradeEl = tr.querySelector(".gradeSelect");
+    const creditsEl = tr.querySelector(".creditsInput");
+    const removeBtn = tr.querySelector(".removeModuleBtn");
+
+    gradeEl.value = grade;
+    creditsEl.value = credits;
+
+    attachLiveCalc(gradeEl);
+    attachLiveCalc(creditsEl);
+
+    removeBtn.addEventListener("click", () => {
+      tr.remove();
+      renumberModules();
+      if (moduleBody.children.length === 0) addModuleRow();
+      calculate();
+    });
+
+    moduleBody.appendChild(tr);
+    renumberModules();
+    calculate();
+  }
+
+  addModuleBtn.addEventListener("click", () => addModuleRow());
+
+  document.getElementById("year").addEventListener("change", () => {
+    updateFactorNote();
+    calculate();
+  });
+
+  document.getElementById("existingQCS").addEventListener("input", calculate);
+  document.getElementById("existingQCS").addEventListener("change", calculate);
+  document.getElementById("existingAtt").addEventListener("input", calculate);
+  document.getElementById("existingAtt").addEventListener("change", calculate);
+  document.getElementById("nonQ").addEventListener("input", calculate);
+  document.getElementById("nonQ").addEventListener("change", calculate);
+
+  document.getElementById("resetAll1").addEventListener("click", () => {
+    document.getElementById("year").value = "1";
+    document.getElementById("existingQCS").value = "";
+    document.getElementById("existingAtt").value = "";
+    document.getElementById("nonQ").value = "";
+    updateFactorNote();
+    setMsg(`<div class="oknote">Reset Page 1 values.</div>`);
+    clearOutputs();
+  });
+
+  document.getElementById("resetMods").addEventListener("click", () => {
+    moduleBody.innerHTML = "";
+    addModuleRow();
+    setMsg(`<div class="oknote">Cleared module inputs.</div>`);
+    clearOutputs();
+  });
+
+  function clearOutputs() {
+    ["totalCredits","semesterQCA","semesterQPV","newQCS","newAtt","newQCA"].forEach(id => {
+      document.getElementById(id).textContent = "—";
+    });
+
+    const rw = document.getElementById("residualWrap");
+    const rn = document.getElementById("residualNote");
+    const rq = document.getElementById("residualQCA");
+    if (rw) rw.style.display = "none";
+    if (rn) rn.style.display = "none";
+    if (rq) rq.textContent = "—";
+  }
+
+  function calculate() {
+    setMsg("");
+
+    const residualWrap = document.getElementById("residualWrap");
+    const residualNote = document.getElementById("residualNote");
+    const residualQCAEl = document.getElementById("residualQCA");
+    residualWrap.style.display = "none";
+    residualNote.style.display = "none";
+    residualQCAEl.textContent = "—";
+
+    const year = Number(document.getElementById("year").value);
+    const factor = factorFromYear(year);
+
+    const existingQCS = numVal("existingQCS");
+    const existingAtt = numVal("existingAtt");
+    const nonQ = numVal("nonQ");
+
+    const errs = [];
+    if (!Number.isFinite(existingQCS)) errs.push("Existing QCS must be a number.");
+    if (!Number.isFinite(existingAtt) || existingAtt < 0) errs.push("Existing Att hours must be a number ≥ 0.");
+    if (!Number.isFinite(nonQ) || nonQ < 0) errs.push("Non-Q hours must be a number ≥ 0.");
+
+    let totalCredits = 0;
+    let totalQPV_raw = 0;
+    let residualQPV_raw = 0;
+    let hasF = false;
+
+    const rows = moduleBody.querySelectorAll("tr");
+
+    rows.forEach((row, index) => {
+      const moduleNumber = index + 1;
+      const grade = row.querySelector(".gradeSelect").value;
+      const creditsStr = row.querySelector(".creditsInput").value;
+      const credits = creditsStr === "" ? 0 : Number(creditsStr);
+
+      if (!Number.isFinite(credits) || credits < 0) {
+        errs.push(`Module ${moduleNumber} credits must be a number ≥ 0.`);
+        return;
+      }
+
+      if (!grade || credits === 0) return;
+
+      const gv = gradeToValue.get(grade);
+      if (gv === undefined) {
+        errs.push(`Module ${moduleNumber} grade is not recognized.`);
+        return;
+      }
+
+      totalCredits += credits;
+      totalQPV_raw += gv * credits;
+
+      if (grade === "F") {
+        hasF = true;
+        residualQPV_raw += gradeToValue.get("C3") * credits;
+      } else {
+        residualQPV_raw += gv * credits;
+      }
+    });
+
+    if (errs.length) {
+      setMsg(`<div class="warn"><strong>Please fix:</strong><ul>${errs.map(e => `<li>${e}</li>`).join("")}</ul></div>`);
+      clearOutputs();
+      return;
+    }
+
+    const semesterAtt = totalCredits * factor;
+    const semesterQPV = totalQPV_raw * factor;
+    const semesterQCAText = semesterAtt > 0 ? fmt(semesterQPV / semesterAtt, 2) : "—";
+
+    const newQCS = existingQCS + semesterQPV;
+    const newAtt = existingAtt + semesterAtt;
+    const denom = newAtt - nonQ;
+
+    let qcaText = "";
+    if (denom <= 0) {
+      qcaText = "Undefined (New Att − Non-Q must be > 0)";
+      setMsg(`<div class="warn">New QCA cannot be computed because (New Att hours − Non-Q hours) is ${fmt(denom,2)} (must be > 0).</div>`);
+    } else {
+      qcaText = fmt(newQCS / denom, 2);
+      setMsg(`<div class="oknote">Calculated successfully.</div>`);
+    }
+
+    if (hasF) {
+      const residualSemesterQPV = residualQPV_raw * factor;
+      const residualNewQCS = existingQCS + residualSemesterQPV;
+
+      residualQCAEl.textContent = denom <= 0
+        ? "Undefined (New Att − Non-Q must be > 0)"
+        : fmt(residualNewQCS / denom, 2);
+
+      residualWrap.style.display = "grid";
+      residualNote.style.display = "block";
+    }
+
+    document.getElementById("totalCredits").textContent = fmt(totalCredits, 2);
+    document.getElementById("semesterQPV").textContent = fmt(semesterQPV, 2);
+    document.getElementById("semesterQCA").textContent = semesterQCAText;
+    document.getElementById("newQCS").textContent = fmt(newQCS, 2);
+    document.getElementById("newAtt").textContent = fmt(newAtt, 2);
+    document.getElementById("newQCA").textContent = qcaText;
+  }
+
+  document.getElementById("calcBtn").addEventListener("click", calculate);
+
+  updateFactorNote();
+  addModuleRow();
+  showPage(1);
+</script>
+</BaseLayout>
