@@ -2,8 +2,45 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import research from '../data/research.json';
+
 const sorted = [...research].sort((a,b) => Number(b.year||0)-Number(a.year||0) || a.title.localeCompare(b.title));
 const years = [...new Set(sorted.map(x => x.year || 'n.d.'))];
+
+const guestLectures = [
+  {
+    title: 'Spatial development at second level',
+    host: 'University of Limerick',
+    year: '2023'
+  }
+];
+
+const presentations = [
+  {
+    title: 'A review of the literature to inform the efficacy of a spatial skills intervention for secondary level STEM education',
+    event: 'PATT39 Conference',
+    location: 'Newfoundland, Canada'
+  },
+  {
+    title: 'Implementation and analysis of a spatial skills course for Secondary level STEM education',
+    event: 'PATT40 Conference',
+    location: 'Liverpool, UK'
+  },
+  {
+    title: 'The challenges of implementing a spatial ability intervention at secondary level',
+    event: 'PATT40 Conference',
+    location: 'Liverpool, UK'
+  },
+  {
+    title: 'Spatial Thinking and STEM: A Study on the Development and Transfer of Spatial Skills in Irish Education',
+    event: 'Spatial Cognition 2024',
+    location: 'Dublin, Ireland'
+  },
+  {
+    title: 'Does Medium Matter? Exploring Validity in Paper and Digital Spatial Ability Tests in Secondary Education.',
+    event: 'PATT41 Conference',
+    location: 'Nanjing, China'
+  }
+];
 ---
 <BaseLayout active="Research" title="Research">
   <Hero title="Research" subtitle="Spatial skills, design thinking and technology education" />
@@ -12,7 +49,7 @@ const years = [...new Set(sorted.map(x => x.year || 'n.d.'))];
       <article class="card research-intro">
         <p class="eyebrow">Research profile</p>
         <h2>Research outputs</h2>
-        <p>My research focuses on spatial skills within technology education and, more recently, design thinking. Publications are refreshed from my public ORCID record, with a committed cache retained for reliability.</p>
+        <p>My research focuses on spatial skills within technology education and, more recently, design thinking. Publications are refreshed from my public ORCID record, with a committed cache and manual records retained for reliability and completeness.</p>
       </article>
       <aside class="card profile-links">
         <strong>Academic profiles</strong>
@@ -35,11 +72,35 @@ const years = [...new Set(sorted.map(x => x.year || 'n.d.'))];
             <div class="publication-meta"><span>{item.type || 'Research output'}</span></div>
             <h3>{item.title}</h3>
             <p class="authors">{item.authors}</p>
-            {item.venue && <p class="muted">{item.venue}</p>}
+            {item.venue && <p class="muted venue">{item.venue}</p>}
             {item.url && <a class="paper-link" href={item.url} target="_blank" rel="noopener">View publication ↗</a>}
           </article>)}
         </div>
       </section>)}
     </div>
+
+    <section class="research-activity">
+      <div class="year-heading activity-heading"><span>Guest lectures</span><div></div></div>
+      <div class="activity-list">
+        {guestLectures.map(item => <article class="card activity-card">
+          <p class="eyebrow">Guest lecture · {item.year}</p>
+          <h3>“{item.title}”</h3>
+          <p class="muted">{item.host}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section class="research-activity">
+      <div class="year-heading activity-heading"><span>Presentations of work</span><div></div></div>
+      <div class="activity-list">
+        {presentations.map((item, index) => <article class="card activity-card presentation-card">
+          <span class="activity-number">{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <h3>“{item.title}”</h3>
+            <p class="muted">{item.event} · {item.location}</p>
+          </div>
+        </article>)}
+      </div>
+    </section>
   </section>
 </BaseLayout>

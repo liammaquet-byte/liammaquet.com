@@ -142,3 +142,22 @@ Before publishing:
 This revision uses a restrained black header/hero treatment with the existing `#C49A6C` accent, card-based Education and Research layouts, consistent branded headers on both browser utilities, and an embedded CV with a **View full CV** action only (no site download button).
 
 The ORCID importer now prioritizes DOI links over repository profile URLs when a DOI is present. `src/data/research-overrides.json` remains the place to correct or enrich individual publication links/metadata when ORCID does not expose the preferred destination.
+
+
+## Adding manual research records
+
+`src/data/research-overrides.json` is the editorial layer on top of ORCID. Entries with a title that exactly matches an ORCID work amend that work. Entries with a new title are added as manual research records and remain present after scheduled ORCID refreshes.
+
+Example:
+
+```json
+{
+  "title": "Developing Spatial Thinking in TY",
+  "year": "2023",
+  "type": "Technical report",
+  "authors": "Gavin Duffy; Sheryl A. Sorby; A. Dwane; Liam Maquet",
+  "venue": "Oide"
+}
+```
+
+An optional `"url"` can be added whenever there is a preferred public destination. To hide an ORCID item from the site, add a matching title with `"hidden": true`.

@@ -2,53 +2,60 @@
   {
     "title": "Decoding Design Thinking: Deepening the Lens on Values and Capabilities",
     "year": "2026",
-    "type": "Conference-paper",
+    "type": "Conference paper",
     "authors": "Liam Maquet; Rónán Dunbar; Jeffrey Buckley",
     "url": "https://doi.org/10.3384/ecp213.1502",
     "venue": "PATT43: The 43rd International Pupils’ Attitudes Towards Technology Research Conference"
   },
   {
-    "title": "Test output",
-    "year": "2026",
-    "type": "Journal-article",
-    "authors": "Liam Maquet",
-    "url": "https://orcid.org/0000-0002-7843-6424"
-  },
-  {
     "title": "Decoding Design Thinking: Common Threads for Technology Education",
     "year": "2025",
-    "type": "Conference-paper",
+    "type": "Conference paper",
     "authors": "Liam Maquet; Rónán Dunbar; Jeffrey Buckley",
-    "url": "https://orcid.org/0000-0002-7843-6424"
+    "url": "https://pure.ul.ie/en/persons/liam-maquet/"
   },
   {
     "title": "Does Medium Matter? Exploring Validity in Paper and Digital Spatial Ability Tests in Secondary Education",
     "year": "2024",
-    "type": "Conference-paper",
+    "type": "Conference paper",
     "authors": "Liam Maquet; Rónán Dunbar; Jeffrey Buckley",
     "url": "https://www.researchgate.net/publication/385514884_Does_Medium_Matter_Exploring_Validity_in_Paper_and_Digital_Spatial_Ability_Tests_in_Secondary_Education",
     "venue": "PATT41: The 41st International Pupils’ Attitudes Towards Technology Research Conference"
   },
   {
+    "title": "Spatial Thinking and STEM: A Study on the Development and Transfer of Spatial Skills in Irish Education",
+    "year": "2024",
+    "type": "Conference poster",
+    "authors": "Liam Maquet; Jeffrey Buckley; Rónán Dunbar; Gavin Duffy; Sheryl A. Sorby",
+    "url": "https://research.tus.ie/en/publications/spatial-thinking-and-stem-a-study-on-the-development-and-transfer/"
+  },
+  {
+    "title": "The Impact of an Intervention for Improving Spatial Cognition Among Adolescents",
+    "year": "2024",
+    "type": "Conference abstract",
+    "authors": "Liam Maquet; Gavin Duffy; Sheryl A. Sorby; Rónán Dunbar",
+    "url": "https://pure.ul.ie/en/persons/liam-maquet/"
+  },
+  {
+    "title": "Developing Spatial Thinking in TY",
+    "year": "2023",
+    "type": "Technical report",
+    "authors": "Gavin Duffy; Sheryl A. Sorby; A. Dwane; Liam Maquet",
+    "venue": "Oide"
+  },
+  {
     "title": "Implementation and analysis of a spatial skills course for Secondary level STEM education",
     "year": "2023",
-    "type": "Conference-paper",
-    "authors": "Ursa Benedicic; Liam Maquet; Gavin Duffy; Ronan Dunbar; Jeff Buckley; Sheryl Sorby",
+    "type": "Conference paper",
+    "authors": "Ursa Benedicic; Liam Maquet; Gavin Duffy; Rónán Dunbar; Jeffrey Buckley; Sheryl A. Sorby",
     "url": "https://openjournals.ljmu.ac.uk/PATT40/article/view/1533",
     "venue": "The 40th International Pupils’ Attitudes Towards Technology Conference"
   },
   {
-    "title": "The challenges of implementing a spatial ability intervention at secondary level",
-    "year": "2023",
-    "type": "Conference-paper",
-    "authors": "Liam Maquet; Urša Benedičič; Rónán Dunbar; Jeffrey Buckley; Gavin Duffy; Sheryl Sorby",
-    "url": "https://openjournals.ljmu.ac.uk/PATT40/article/download/1534/1016"
-  },
-  {
     "title": "A Review of The Literature To Inform the Efficacy of a Spatial Skills Intervention For Secondary Level STEM Education",
     "year": "2022",
-    "type": "Conference-paper",
-    "authors": "See ORCID record",
-    "url": "https://www.researchgate.net/profile/Liam-Maquet/publication/361464198_A_Review_of_The_Literature_To_Inform_the_Efficacy_of_a_Spatial_Skills_Intervention_For_Secondary_Level_STEM_Education/links/62b30c0d1010dc02cc5388bd/A-Review-of-The-Literature-To-Inform-the-Efficacy-of-a-Spatial-Skills-Intervention-For-Secondary-Level-STEM-Education.pdf"
+    "type": "Conference paper",
+    "authors": "Liam Maquet; Rónán Dunbar; Jeffrey Buckley; Niall Seery; Sheryl A. Sorby",
+    "url": "https://www.researchgate.net/publication/361464198_A_Review_of_The_Literature_To_Inform_the_Efficacy_of_a_Spatial_Skills_Intervention_For_Secondary_Level_STEM_Education"
   }
 ]
