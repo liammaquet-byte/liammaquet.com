@@ -28,23 +28,8 @@ const base = import.meta.env.BASE_URL;
         <a class:list={{active: active==='Research'}} href={`${base}research/`}>Research</a>
         <a class:list={{active: active==='Teaching'}} href={`${base}teaching/`}>Teaching</a>
         <a class:list={{active: active==='First Year Teaching'}} href={`${base}first-year-teaching/`}>First Year Teaching</a>
-
-        <details class="nav-group" class:list={{active: active==='Graphics'}}>
-          <summary>Graphics</summary>
-          <div class="nav-dropdown">
-            <a href={`${base}graphics/`}>Graphics overview</a>
-            <a href={`${base}graphics/orthographic-projection-auxiliary-views/`}>Orthographic projection & auxiliary views</a>
-          </div>
-        </details>
-
-        <details class="nav-group" class:list={{active: active==='Tools'}}>
-          <summary>Tools</summary>
-          <div class="nav-dropdown">
-            <a href={`${base}tools/`}>All tools</a>
-            <a href={`${base}qca-calculator/`}>QCA Calculator</a>
-            <a href={`${base}qr-code-generator/`}>QR Code Generator</a>
-          </div>
-        </details>
+        <a class:list={{active: active==='Graphics'}} href={`${base}graphics/`}>Graphics</a>
+        <a class:list={{active: active==='Tools'}} href={`${base}tools/`}>Tools</a>
 
         <a class:list={["search-link",{active: active==='Search'}]} href={`${base}search/`} aria-label="Search site">⌕ <span>Search</span></a>
       </nav>
@@ -62,10 +47,6 @@ const base = import.meta.env.BASE_URL;
         btn.setAttribute('aria-expanded', String(!open));
         nav?.classList.toggle('open', !open);
       });
-      document.addEventListener('click', (event) => {
-        document.querySelectorAll('.nav-group[open]').forEach(group => {
-          if (!group.contains(event.target)) group.removeAttribute('open');
-        });
       });
     </script>
   </body>

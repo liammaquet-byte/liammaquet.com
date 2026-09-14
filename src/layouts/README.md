@@ -178,3 +178,8 @@ The inline CV view is rendered from `public/assets/cv-pages/`. When replacing th
 
 ### Search maintenance
 The static search index currently lives in `src/pages/search.astro`. Add a search entry there when adding a major new page. Research records are incorporated into that index at build time.
+
+
+## Navigation refinement (v5)
+
+The **Graphics** and **Tools** sections now use clean top-level navigation links rather than dropdown menus. Each opens its own landing page, which is the intended place to browse resources/tools as those sections grow.
