@@ -2,25 +2,22 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 const base = import.meta.env.BASE_URL;
+const cvUrl = `${base}downloads/Liam-Maquet-CV.pdf`;
 ---
 <BaseLayout active="Curriculum Vitae" title="Curriculum Vitae">
-  <Hero title="Curriculum Vitae" />
+  <Hero title="Curriculum Vitae" subtitle="Academic experience, education and professional practice" />
   <section class="container">
-    <div style="display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:35px">
-      <div><h2 class="section-title" style="margin-bottom:8px">Academic & professional profile</h2><p class="muted">A concise web version of Liam Maquet’s current CV.</p></div>
-      <a class="button-dark" href={`${base}downloads/Liam-Maquet-CV.pdf`} download>Download CV (PDF)</a>
+    <div class="page-intro card">
+      <div>
+        <p class="eyebrow">Curriculum Vitae</p>
+        <h2>Full academic & professional CV</h2>
+        <p class="muted">The document below is the current CV. Use the full-view control to open it in a dedicated browser tab.</p>
+      </div>
+      <a class="button-dark" href={cvUrl} target="_blank" rel="noopener">View full CV ↗</a>
     </div>
-    <div class="timeline">
-      <div class="timeline-item"><div><h3>Assistant Professor</h3><p class="meta">University of Limerick · Nov 2025–present</p></div><div><p>Course Director for LM095; module leadership across technology education, graphics, pedagogy, and health and safety; school placement tutoring; course-board leadership and programme development.</p></div></div>
-      <div class="timeline-item"><div><h3>University Teacher</h3><p class="meta">University of Limerick · Aug 2023–Nov 2025</p></div><div><p>Led and developed modules across LM095, supported school placement, managed teaching and assessment, and aligned module design with curricular and pedagogical research.</p></div></div>
-      <div class="timeline-item"><div><h3>Teaching Assistant</h3><p class="meta">University of Limerick · Aug 2021–Jun 2023</p></div><div><p>Taught across LM094, LM095 and PME programmes, designed and conducted assessment, supported school placement, and represented teaching assistants on the course board.</p></div></div>
-      <div class="timeline-item"><div><h3>PhD Candidate</h3><p class="meta">Technological University of the Shannon · 2021–present</p></div><div><p>Researching adolescent spatial skills in technology education, including school-based research and national CPD work with Oide.</p></div></div>
-      <div class="timeline-item"><div><h3>BTech (Ed)</h3><p class="meta">University of Limerick · 2017–2021</p></div><div><p>Materials and Engineering Technology, First Class Honours. Recipient of the President’s Access Scholars Award (2021).</p></div></div>
-    </div>
-    <h2 class="section-title" style="margin-top:60px">Core skills</h2>
-    <div class="teaching-grid">
-      <div class="card">Classroom-based research · academic writing and dissemination · qualitative data analysis in R.</div>
-      <div class="card">Parametric modelling · technology education pedagogy · curriculum and CPD development · peer mentoring.</div>
+    <div class="pdf-shell">
+      <iframe src={`${cvUrl}#view=FitH&toolbar=1&navpanes=0`} title="Liam Maquet curriculum vitae"></iframe>
+      <p class="pdf-fallback">If your browser does not display embedded PDFs, <a href={cvUrl} target="_blank" rel="noopener">open the CV in full view</a>.</p>
     </div>
   </section>
 </BaseLayout>

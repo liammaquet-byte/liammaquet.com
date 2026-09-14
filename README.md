@@ -135,3 +135,10 @@ Before publishing:
 - Verify CV download.
 - Verify no certificate / SET PDFs are present in `dist/`.
 - Verify GitHub Pages deployment on the repository URL before making any DNS/domain changes.
+
+
+## Design revision (v2)
+
+This revision uses a restrained black header/hero treatment with the existing `#C49A6C` accent, card-based Education and Research layouts, consistent branded headers on both browser utilities, and an embedded CV with a **View full CV** action only (no site download button).
+
+The ORCID importer now prioritizes DOI links over repository profile URLs when a DOI is present. `src/data/research-overrides.json` remains the place to correct or enrich individual publication links/metadata when ORCID does not expose the preferred destination.

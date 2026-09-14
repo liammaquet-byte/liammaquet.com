@@ -3,21 +3,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import research from '../data/research.json';
 const sorted = [...research].sort((a,b) => Number(b.year||0)-Number(a.year||0) || a.title.localeCompare(b.title));
+const years = [...new Set(sorted.map(x => x.year || 'n.d.'))];
 ---
 <BaseLayout active="Research" title="Research">
-  <Hero title="Research" />
+  <Hero title="Research" subtitle="Spatial skills, design thinking and technology education" />
   <section class="container">
-    <div class="research-actions">
-      <a class="button-dark" href="https://www.researchgate.net/profile/Liam-Maquet">ResearchGate</a>
-      <a class="button-dark" href="https://scholar.google.com/citations?user=Nrot2nMAAAAJ&hl=en&oi=sra">Google Scholar</a>
+    <div class="research-profile-grid">
+      <article class="card research-intro">
+        <p class="eyebrow">Research profile</p>
+        <h2>Research outputs</h2>
+        <p>My research focuses on spatial skills within technology education and, more recently, design thinking. Publications are refreshed from my public ORCID record, with a committed cache retained for reliability.</p>
+      </article>
+      <aside class="card profile-links">
+        <strong>Academic profiles</strong>
+        <a href="https://orcid.org/0000-0002-7843-6424">ORCID ↗</a>
+        <a href="https://www.researchgate.net/profile/Liam-Maquet">ResearchGate ↗</a>
+        <a href="https://scholar.google.com/citations?user=Nrot2nMAAAAJ&hl=en&oi=sra">Google Scholar ↗</a>
+      </aside>
     </div>
-    <h2 class="section-title">Research outputs</h2>
-    <p class="muted">Generated from ORCID during the scheduled repository workflow, with committed cached data available when ORCID is unavailable.</p>
-    <div class="research-list">
-      {sorted.map((item) => <article class="publication">
-        <h3>{item.url ? <a href={item.url}>{item.title}</a> : item.title} <span class="tag">{item.year || 'n.d.'}</span></h3>
-        <p>{item.authors}</p><p class="muted">{item.type}</p>
-      </article>)}
+
+    <nav class="year-nav" aria-label="Research by year">
+      <span>Jump to</span>
+      {years.map(year => <a href={`#year-${year}`}>{year}</a>)}
+    </nav>
+
+    <div class="research-years">
+      {years.map(year => <section class="research-year" id={`year-${year}`}>
+        <div class="year-heading"><span>{year}</span><div></div></div>
+        <div class="publication-cards">
+          {sorted.filter(item => (item.year || 'n.d.') === year).map(item => <article class="card publication-card">
+            <div class="publication-meta"><span>{item.type || 'Research output'}</span></div>
+            <h3>{item.title}</h3>
+            <p class="authors">{item.authors}</p>
+            {item.venue && <p class="muted">{item.venue}</p>}
+            {item.url && <a class="paper-link" href={item.url} target="_blank" rel="noopener">View publication ↗</a>}
+          </article>)}
+        </div>
+      </section>)}
     </div>
   </section>
 </BaseLayout>

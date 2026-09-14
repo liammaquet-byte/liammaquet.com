@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
 const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout active="QR Code Generator" title="QR Code Generator">
+  <Hero title="QR Code Generator" subtitle="Create QR codes locally in your browser" />
   <section class="utility-wrap">
-    <h1>Free QR Code Generator</h1>
-    <p class="muted">All QR codes are generated in your browser. Nothing is uploaded or stored.</p>
+    <div class="utility-intro"><h1>Free QR Code Generator</h1><p class="muted">All QR codes are generated in your browser. Nothing is uploaded or stored.</p></div>
     <div class="form-card">
       <label for="text">Text or URL</label>
       <textarea id="text" rows="5" placeholder="Enter a website link, text, email, Wi-Fi password, or any message..."></textarea>

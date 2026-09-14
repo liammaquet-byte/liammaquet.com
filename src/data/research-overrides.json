@@ -1,4 +1,20 @@
 {
   "_instructions": "Entries here override ORCID/cache items by exact title. Add new records with a title and optional year/type/authors/url. Set hidden:true to suppress an item.",
-  "items": []
+  "items": [
+    {
+      "title": "Decoding Design Thinking: Deepening the Lens on Values and Capabilities",
+      "url": "https://doi.org/10.3384/ecp213.1502",
+      "venue": "PATT43: The 43rd International Pupils’ Attitudes Towards Technology Research Conference"
+    },
+    {
+      "title": "Implementation and analysis of a spatial skills course for Secondary level STEM education",
+      "url": "https://openjournals.ljmu.ac.uk/PATT40/article/view/1533",
+      "venue": "The 40th International Pupils’ Attitudes Towards Technology Conference"
+    },
+    {
+      "title": "Does Medium Matter? Exploring Validity in Paper and Digital Spatial Ability Tests in Secondary Education",
+      "url": "https://www.researchgate.net/publication/385514884_Does_Medium_Matter_Exploring_Validity_in_Paper_and_Digital_Spatial_Ability_Tests_in_Secondary_Education",
+      "venue": "PATT41: The 41st International Pupils’ Attitudes Towards Technology Research Conference"
+    }
+  ]
 }

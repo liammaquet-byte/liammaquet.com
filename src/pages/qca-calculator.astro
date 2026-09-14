@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
 ---
 <BaseLayout active="QCA Calculator" title="QCA Calculator">
+  <Hero title="QCA Calculator" subtitle="A private, browser-based QCA and QCS calculation tool" />
   <section class="utility-wrap">
-    <h1>QCA / QCS Calculator</h1>
-    <p class="muted">All calculations run in your browser. Nothing is uploaded or stored.</p>
+    <div class="utility-intro"><h1>QCA / QCS Calculator</h1><p class="muted">All calculations run in your browser. Nothing is uploaded or stored.</p></div>
 
     <div id="page1" class="form-card">
       <h2 style="margin:0 0 10px;font-size:18px">Page 1 - Current values</h2>

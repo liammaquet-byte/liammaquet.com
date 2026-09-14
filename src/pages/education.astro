@@ -3,36 +3,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 ---
 <BaseLayout active="Education" title="Education">
-  <Hero title="Education" />
-  <section class="container timeline">
-    <div class="timeline-item">
-      <div>
-        <h3>Primary Degree</h3>
-        <h4>BTech (Ed) in Materials and Engineering Technology</h4>
-        <p class="meta">University of Limerick</p><p class="meta">1.1 Honours Degree</p><p class="meta">2017–2021</p>
-      </div>
-      <div>
-        <p>I graduated from the University of Limerick in 2021 as a secondary school teacher of Engineering, Technology, and Graphics. The programme developed advanced hand and machine skills in material processing and manufacturing, knowledge in engineering and technology, strong graphical principles, and pedagogical skills for teaching these areas.</p>
-        <p><strong>Selected module areas:</strong> Design and communication graphics, process technology, design and technology, and foundational education studies.</p>
-      </div>
+  <Hero title="Education" subtitle="Academic study, doctoral research and awards" />
+  <section class="container">
+    <div class="education-grid">
+      <article class="card feature-card">
+        <p class="eyebrow">2017–2021 · University of Limerick</p>
+        <h2>BTech (Ed) in Materials and Engineering Technology</h2>
+        <p class="credential">First Class Honours</p>
+        <p>I graduated in 2021 as a secondary school teacher of Engineering, Technology, and Graphics. The programme developed advanced hand and machine skills in material processing and manufacturing, knowledge in engineering and technology, graphical principles, and pedagogical skills for teaching these areas.</p>
+        <p class="muted"><strong>Selected areas:</strong> Design and communication graphics, process technology, design and technology, and foundational education studies.</p>
+      </article>
+      <article class="card feature-card">
+        <p class="eyebrow">2021–present · TUS Midlands Midwest</p>
+        <h2>PhD in Technology Education</h2>
+        <p class="credential">Current study</p>
+        <p>My doctoral research focuses on the development of spatial skills within secondary-level technology education. The work has included collaboration with Oide/PDST on teacher CPD and spatial-thinking training for Transition Year students across Ireland.</p>
+        <p class="muted">The research also involves colleagues at Technological University Dublin and the University of Cincinnati and examines spatial-skill development and educational transfer.</p>
+      </article>
     </div>
-    <div class="timeline-item">
-      <div>
-        <h3>Current Study</h3>
-        <h4>PhD student in Technology Education</h4>
-        <p class="meta">Technological University of the Shannon: Midlands Midwest</p><p class="meta">2021–present</p>
-      </div>
-      <div>
-        <p>I began my PhD studies in 2021 focusing on the development of spatial skills within secondary-level technology education. The work has included collaboration with Oide/PDST on teacher CPD around spatial learning and the rollout of spatial-thinking training for Transition Year students across Ireland.</p>
-        <p>With colleagues at Technological University Dublin and the University of Cincinnati, the research examines the development of spatial skills and educational transfer among TY participants.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div><h3>Academic awards</h3></div>
-      <div class="stack">
-        <div><h4>President’s Doctoral Scholarship</h4><p>Recipient of the Technological University of the Shannon: Midlands Midwest doctoral scholarship, providing a fee waiver and annual funding for PhD study.</p></div>
-        <div><h4>President’s Access Scholars Award</h4><p>Awarded during fourth year of undergraduate study on the basis of achieving the highest QCA among access students in the year.</p></div>
-      </div>
+    <h2 class="section-title spaced-title">Academic awards</h2>
+    <div class="education-grid">
+      <article class="card award-card"><h3>President’s Doctoral Scholarship</h3><p>Technological University of the Shannon: Midlands Midwest doctoral scholarship, providing a fee waiver and annual funding for PhD study.</p></article>
+      <article class="card award-card"><h3>President’s Access Scholars Award</h3><p>Awarded during fourth year of undergraduate study on the basis of achieving the highest QCA among access students in the year.</p></article>
     </div>
   </section>
 </BaseLayout>

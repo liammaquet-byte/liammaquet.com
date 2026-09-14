@@ -3,6 +3,7 @@ const { title, subtitle = '' } = Astro.props;
 ---
 <section class="hero">
   <div class="hero-inner">
+    <span class="hero-rule" aria-hidden="true"></span>
     <h1>{title}</h1>
     {subtitle && <p>{subtitle}</p>}
   </div>

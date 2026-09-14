@@ -20,10 +20,11 @@ function pickType(summary) {
   return String(summary?.type || 'Research output').replaceAll('_',' ').toLowerCase().replace(/^\w/, c => c.toUpperCase());
 }
 function pickUrl(summary) {
-  if (summary?.url?.value) return summary.url.value;
   const ids = summary?.['external-ids']?.['external-id'] || [];
   const doi = ids.find(x => x?.['external-id-type']?.toLowerCase() === 'doi')?.['external-id-value'];
-  return doi ? `https://doi.org/${doi}` : `https://orcid.org/${ORCID}`;
+  if (doi) return `https://doi.org/${String(doi).replace(/^https?:\/\/(dx\.)?doi\.org\//i, '')}`;
+  if (summary?.url?.value) return summary.url.value;
+  return `https://orcid.org/${ORCID}`;
 }
 
 async function getAuthors(putCode) {
