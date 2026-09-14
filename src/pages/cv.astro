@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 const base = import.meta.env.BASE_URL;
 const cvUrl = `${base}downloads/Liam-Maquet-CV.pdf`;
+const pages = [1,2,3];
 ---
 <BaseLayout active="Curriculum Vitae" title="Curriculum Vitae">
   <Hero title="Curriculum Vitae" subtitle="Academic experience, education and professional practice" />
@@ -11,13 +12,12 @@ const cvUrl = `${base}downloads/Liam-Maquet-CV.pdf`;
       <div>
         <p class="eyebrow">Curriculum Vitae</p>
         <h2>Full academic & professional CV</h2>
-        <p class="muted">The document below is the current CV. Use the full-view control to open it in a dedicated browser tab.</p>
+        <p class="muted">The CV is displayed below in a responsive page view that works consistently across desktop, tablet and mobile.</p>
       </div>
       <a class="button-dark" href={cvUrl} target="_blank" rel="noopener">View full CV ↗</a>
     </div>
-    <div class="pdf-shell">
-      <iframe src={`${cvUrl}#view=FitH&toolbar=1&navpanes=0`} title="Liam Maquet curriculum vitae"></iframe>
-      <p class="pdf-fallback">If your browser does not display embedded PDFs, <a href={cvUrl} target="_blank" rel="noopener">open the CV in full view</a>.</p>
+    <div class="cv-document" aria-label="Liam Maquet curriculum vitae">
+      {pages.map((page) => <img src={`${base}assets/cv-pages/cv-${page}.jpg`} alt={`Curriculum Vitae — page ${page}`} loading={page === 1 ? 'eager' : 'lazy'} />)}
     </div>
   </section>
 </BaseLayout>

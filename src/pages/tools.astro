@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout active="Tools" title="Tools">
+  <Hero title="Tools" subtitle="Useful browser-based tools for students and educators" />
+  <section class="container">
+    <div class="education-grid">
+      <article class="card feature-card"><p class="eyebrow">Academic tool</p><h2>QCA Calculator</h2><p>Calculate current and projected QCA/QCS values locally in your browser.</p><a class="paper-link" href={`${base}qca-calculator/`}>Open calculator →</a></article>
+      <article class="card feature-card"><p class="eyebrow">Utility</p><h2>QR Code Generator</h2><p>Create custom QR codes locally in your browser without uploading or storing your content.</p><a class="paper-link" href={`${base}qr-code-generator/`}>Open generator →</a></article>
+    </div>
+  </section>
+</BaseLayout>
