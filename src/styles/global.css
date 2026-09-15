@@ -51,3 +51,7 @@
 .resource-coming-soon{border-style:dashed;background:#fbfaf8}
 @media(max-width:1180px){.site-header{padding-left:18px;padding-right:18px}.main-nav{gap:13px}.main-nav a{font-size:10px}}
 @media(max-width:820px){.main-nav{overflow:visible}.search-link{width:100%;font-size:12px!important}.takeaway-grid{grid-template-columns:1fr}.lesson-intro h1{font-size:27px}}
+
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:900px){.tools-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.tools-grid{grid-template-columns:1fr}}
