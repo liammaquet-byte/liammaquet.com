@@ -183,3 +183,12 @@ The static search index currently lives in `src/pages/search.astro`. Add a searc
 ## Navigation refinement (v5)
 
 The **Graphics** and **Tools** sections now use clean top-level navigation links rather than dropdown menus. Each opens its own landing page, which is the intended place to browse resources/tools as those sections grow.
+
+
+## Sheet Nester integration (v6)
+
+The Tools landing page now includes **Sheet Nester**, hosted at `public/tools/sheet-nester/`.
+
+The tool's nesting/import/export behaviour has not been changed. Its presentation has been aligned with the site's Montserrat, black/white and `#C49A6C` visual theme. The original `LICENSE.txt`, `GPL-3.0.txt`, `THIRD_PARTY_NOTICES.md`, `dwg-worker.js` and `dwg-adapter.js` are retained with the tool. Keep those files publicly deployed alongside `index.html`.
+
+DWG import continues to use the tool's existing separate worker and pinned LibreDWG integration as described in its third-party notices.
