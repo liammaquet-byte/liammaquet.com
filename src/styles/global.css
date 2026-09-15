@@ -55,3 +55,13 @@
 .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 @media(max-width:900px){.tools-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.tools-grid{grid-template-columns:1fr}}
+
+/* Shared compact banner for individual Tools pages */
+.tool-site-bar{background:#090909;color:#fff;border-bottom:3px solid var(--gold)}
+.tool-site-bar-inner{width:min(1180px,calc(100% - 32px));margin:0 auto;min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.tool-site-brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:.78rem;font-weight:700;letter-spacing:.04em}
+.tool-site-mark{width:30px;height:30px;border:2px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-size:.62rem;font-weight:800}
+.tool-site-back{color:#fff;text-decoration:none;font-size:.8rem;font-weight:600}
+.tool-site-back:hover{color:var(--gold)}
+.utility-intro .eyebrow{margin-bottom:6px}
+@media(max-width:620px){.tool-site-bar-inner{width:min(100% - 18px,1180px);min-height:68px}.tool-site-brand span:last-child{font-size:.68rem}.tool-site-back{font-size:.7rem}}
