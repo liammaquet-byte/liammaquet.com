@@ -110,7 +110,7 @@ input[type="number"], select {
 
 input[type="number"]:focus, select:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(20, 99, 255, 0.11);
+  box-shadow: 0 0 0 3px rgba(196, 154, 108, 0.15);
 }
 
 .check-label {
@@ -144,7 +144,7 @@ input[type="number"]:focus, select:focus {
 .button.primary { background: var(--accent); color: #fff; }
 .button.primary:hover { background: var(--accent-dark); }
 .button.secondary { background: var(--soft); color: var(--accent-dark); }
-.button.secondary:hover { background: #dfeaff; }
+.button.secondary:hover { background: #ecdfd0; }
 .button.ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); }
 .button:disabled, .icon-button:disabled { opacity: 0.42; cursor: not-allowed; }
 

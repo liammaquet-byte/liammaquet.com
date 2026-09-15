@@ -199,3 +199,8 @@ DWG import continues to use the tool's existing separate worker and pinned Libre
 Individual tools now share the same compact black/gold **LIAM MAQUET · TOOLS** banner with a **Back to Tools** link. QCA Calculator and QR Code Generator use `src/layouts/ToolLayout.astro`; Sheet Nester retains its self-contained equivalent banner.
 
 The Sheet Nester DXF/DWG upload area and local-processing notice were changed from blue to neutral/gold site-theme tones. No nesting, DXF/DWG import/export logic, third-party notices, worker code or licence files were changed.
+
+
+## Sheet Nester update (v8)
+
+`public/tools/sheet-nester/` now contains the newer supplied Sheet Nester release. Its current functionality and supplied third-party/licensing files are retained. The agreed Liam Maquet visual layer has been reapplied: Montserrat, black/white/gold palette, compact **LIAM MAQUET · TOOLS** banner, and neutral/gold DXF/DWG upload, processing and progress states.

@@ -1,30 +1,42 @@
-# Sheet Nester v3.1 — public/free release package
+# Sheet Nester v3.4.1 — export validator hotfix
 
-This release keeps the v2.9 lattice nesting engine and v3.0.1 CAD behaviour, but cleans up the DWG integration for a public, non-commercial website.
+This is v3.4 with one targeted fix.
 
-## Upload these files together
+The full R2000 DXF document added in the recent CAD-compatibility work uses the
+standard fixed-width DXF group-code formatting (for example `  0`, `  2`, `100`).
+The browser's safety validator was still expecting unpadded codes such as `0`
+and `2`, so it incorrectly reported **"DXF validation failed: file envelope is
+incomplete"** before download.
 
-- `index.html`
-- `dwg-adapter.js`
-- `dwg-worker.js`
-- `LICENSE.txt`
-- `GPL-3.0.txt`
-- `THIRD_PARTY_NOTICES.md`
+v3.4.1 makes the validator parse DXF group codes correctly regardless of their
+legal whitespace padding and validates R2000 sections as code/value pairs.
 
-DWG decoding is isolated in `dwg-worker.js`. The worker loads the pinned GPL-licensed `@mlightcad/libredwg-web` 0.7.10 decoder only when a user opens a DWG. Drawing bytes stay in the browser.
+There are **no nesting/optimisation changes from v3.4**.
 
-## Licences
+# Sheet Nester v3.4 — mixed-part optimisation + UI cleanup
 
-The original Sheet Nester main application and main-thread bridge are provided under the MIT licence. The DWG worker integration is GPL-3.0-or-later because it is the boundary that loads and runs the GPL DWG parser. See `THIRD_PARTY_NOTICES.md` and `GPL-3.0.txt`.
+This release keeps the v3.3 CAD export and clearance-safety fixes and focuses on mixed part jobs and the nesting workflow.
 
-Non-commercial/free hosting does not remove GPL obligations, so keep the licence and notice files on the public site with the application.
+## Mixed CAD jobs
 
-## Trademark wording
+Fine mode now protects the strongest repeating part family instead of immediately breaking it apart when other part types are present. It builds a safe dense shear-lattice band for the dominant repeated profile, then places the other part types into available space around it using true-profile collision checks. The candidate is still compared against the ordinary mixed packing, pair and lattice candidates, so fewest sheets remains the first priority.
 
-The UI uses DWG only descriptively (for example, “works with DWG files”) and includes an Autodesk independence/trademark notice. Do not rename the product to include DWG or use Autodesk logos.
+The final whole-sheet clearance audit remains mandatory and DXF export is still blocked if an overlap is detected.
 
-## Optional fully self-hosted decoder
+## Interface changes
 
-`dwg-worker.js` first looks for `./vendor/libredwg-web/dist/libredwg-web.js`; if absent, it falls back to the pinned jsDelivr package. If you later self-host the decoder, also retain/provide the exact matching corresponding source described in `THIRD_PARTY_NOTICES.md`.
+- Curve collision tolerance is no longer exposed in the UI. It remains fixed internally at **0.05 mm**; original CAD geometry is still preserved for export.
+- The completed layout summary is simplified to part count, sheet count and clearance status.
+- While CAD nesting is running, the imported-file table fades and becomes non-interactive.
+- A compact progress card is displayed over the file list with a thin progress bar, current stage, best sheet count and Cancel control.
 
-This package is a compliance-oriented technical arrangement, not a substitute for legal advice.
+## Defaults
+
+- Sheet: 1200 × 600 mm
+- Edge margin: 0 mm
+- Part gap / kerf: 0.2 mm
+- Rotation increment: 1°
+- Optimisation: Fine
+- Internal curve collision tolerance: 0.05 mm
+
+DWG decoding remains local in the browser using the packaged WebAssembly/LibreDWG integration. See `THIRD_PARTY_NOTICES.md` and `GPL-3.0.txt`.
