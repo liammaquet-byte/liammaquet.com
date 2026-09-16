@@ -1,5 +1,5 @@
 {
-  "name": "liam-maquet-portfolio",
+  "name": "liam-maquet-graphics-public",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -8,14 +8,13 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "research:update": "node scripts/fetch-orcid.mjs",
     "smoke": "node scripts/smoke-test.mjs"
   },
   "dependencies": {
-    "astro": "^6.0.0"
+    "astro": "^7.3.2"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.10",
     "typescript": "^5.9.2"
   }
 }

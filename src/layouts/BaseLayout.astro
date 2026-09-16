@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-const { title = 'Liam Maquet', description = 'Assistant Professor in Technology Education', active = '' } = Astro.props;
+const { title = 'Graphics', description = 'Technical graphics, descriptive geometry and spatial reasoning', active = 'Graphics' } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 <!doctype html>
@@ -16,38 +16,18 @@ const base = import.meta.env.BASE_URL;
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href={base} aria-label="Liam Maquet home">
+    <header class="site-header graphics-only-header">
+      <a class="brand" href={`${base}graphics/`} aria-label="Liam Maquet Graphics">
         <span class="brand-mark">LM</span><span class="brand-name">LIAM MAQUET</span>
       </a>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
-      <nav id="main-nav" class="main-nav" aria-label="Primary">
-        <a class:list={{active: active==='Home'}} href={base}>Home</a>
-        <a class:list={{active: active==='Curriculum Vitae'}} href={`${base}cv/`}>Curriculum Vitae</a>
-        <a class:list={{active: active==='Education'}} href={`${base}education/`}>Education</a>
-        <a class:list={{active: active==='Research'}} href={`${base}research/`}>Research</a>
-        <a class:list={{active: active==='Teaching'}} href={`${base}teaching/`}>Teaching</a>
-        <a class:list={{active: active==='First Year Teaching'}} href={`${base}first-year-teaching/`}>First Year Teaching</a>
+      <nav class="main-nav graphics-only-nav" aria-label="Primary">
         <a class:list={{active: active==='Graphics'}} href={`${base}graphics/`}>Graphics</a>
-        <a class:list={{active: active==='Tools'}} href={`${base}tools/`}>Tools</a>
-
-        <a class:list={["search-link",{active: active==='Search'}]} href={`${base}search/`} aria-label="Search site">⌕ <span>Search</span></a>
       </nav>
     </header>
     <main><slot /></main>
-    <footer class="site-footer">
+    <footer class="site-footer graphics-only-footer">
       <p>© {new Date().getFullYear()} Liam Maquet</p>
-      <div><a href="mailto:Liam.Maquet@ul.ie">Email</a><a href="https://orcid.org/0000-0002-7843-6424">ORCID</a><a href="https://www.linkedin.com/in/liam-maquet/">LinkedIn</a></div>
+      <div><a href={`${base}graphics/`}>Graphics resources</a></div>
     </footer>
-    <script is:inline>
-      const btn = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('.main-nav');
-      btn?.addEventListener('click', () => {
-        const open = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', String(!open));
-        nav?.classList.toggle('open', !open);
-      });
-      });
-    </script>
   </body>
 </html>

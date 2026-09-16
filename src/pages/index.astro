@@ -1,29 +1,16 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
 const base = import.meta.env.BASE_URL;
+const target = `${base}graphics/`;
 ---
-<BaseLayout active="Home" title="Home">
-  <Hero title="Liam Maquet" subtitle="Assistant Professor in Technology Education" />
-  <section class="container two-col">
-    <aside class="sidebar">
-      <img class="profile-img" src={`${base}assets/liam-maquet.png`} alt="Portrait of Liam Maquet" />
-      <h2>Contact details</h2>
-      <p><a href="mailto:Liam.Maquet@ul.ie">Liam.Maquet@ul.ie</a></p>
-      <h2>Academic Profiles</h2>
-      <div class="link-list">
-        <a href="https://www.researchgate.net/profile/Liam-Maquet">ResearchGate</a>
-        <a href="https://orcid.org/0000-0002-7843-6424">ORCID</a>
-        <a href="https://scholar.google.com/citations?user=Nrot2nMAAAAJ&hl=en&oi=sra">Google Scholar</a>
-        <a href="https://www.linkedin.com/in/liam-maquet/">LinkedIn</a>
-      </div>
-    </aside>
-    <article class="content">
-      <h2 class="section-title">Overview</h2>
-      <p>I am an Assistant Professor in Technology Education at the University of Limerick, with a background in engineering, technology, and graphics education. I hold a First Class Honours degree in Technology Education (LM095) from the University of Limerick, where I developed a strong foundation in engineering and design, alongside specialist pedagogical knowledge in technology education.</p>
-      <p>Since joining the University of Limerick in 2021, I have progressed from Teaching Assistant to University Teacher, and subsequently to Assistant Professor (2025). In my current role, I design and deliver modules across core disciplinary areas and subject-specific pedagogies on undergraduate initial teacher education programmes (LM094 and LM095). I also serve as Course Director for LM095 (Bachelor of Education in Graphics, Engineering, and Technology), where I support student teachers throughout their school placement experiences, providing academic guidance, mentorship, and professional support.</p>
-      <p>My teaching practice is underpinned by a student-centred philosophy, with an emphasis on active learning, continuous feedback, and reflective dialogue. Engagement with the Student Evaluation of Teaching (SET) process has consistently highlighted the effectiveness of this approach, with strong positive feedback informing the ongoing development of my practice.</p>
-      <p>Alongside my teaching, I am undertaking PhD research focused on the development of spatial skills within technology education. My doctoral work, conducted in collaboration with colleagues in the Technology Education Research Group (TERG) and an international supervisory team, explores how spatial ability can be effectively supported across secondary level curricula. As part of this research, I have worked in partnership with Oide to design and deliver national continuing professional development (CPD) in spatial skills, including the implementation of a nationwide pilot programme for Transition Year (TY) students.</p>
-    </article>
-  </section>
-</BaseLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <title>Graphics | Liam Maquet</title>
+  </head>
+  <body>
+    <p><a href={target}>Open Graphics resources</a></p>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+<section class="graphics-quiz" id="graphicsQuiz" aria-labelledby="quizTitle">
+  <section id="questionScreen">
+    <header class="quiz-header">
+      <p class="eyebrow">Technical graphics · self-check</p>
+      <h2 id="quizTitle">True Length &amp; True Shape Check</h2>
+      <p class="intro">Use the relationship between each feature and the XY reference line. The plan is shown below the elevation, following first-angle convention.</p>
+      <div class="progress-row">
+        <span id="questionNumber">Question 1 of 6</span>
+        <span id="scoreLabel">Score: 0</span>
+      </div>
+      <div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+    </header>
+
+    <div class="quiz-body">
+      <h3 id="questionText" tabindex="-1"></h3>
+      <p class="hint">Select a drawing directly, or use the answer buttons below.</p>
+
+      <div class="drawing" aria-label="First-angle orthographic drawing">
+        <button class="view" id="elevationView" data-answer="elevation" aria-label="Choose elevation">
+          <span class="view-label">Elevation</span>
+          <svg id="elevationSvg" viewBox="0 0 760 205" role="img" aria-label="Elevation"></svg>
+        </button>
+        <div class="xy-row" aria-label="XY reference line"><span>XY</span></div>
+        <button class="view" id="planView" data-answer="plan" aria-label="Choose plan">
+          <span class="view-label">Plan</span>
+          <svg id="planSvg" viewBox="0 0 760 205" role="img" aria-label="Plan"></svg>
+        </button>
+      </div>
+
+      <div class="options" aria-label="Answer choices">
+        <button class="answer" data-answer="elevation">Elevation</button>
+        <button class="answer" data-answer="plan">Plan</button>
+        <button class="answer" data-answer="both">Both</button>
+        <button class="answer" data-answer="neither">Neither</button>
+      </div>
+
+      <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+      <button id="nextButton" class="next">Next question</button>
+    </div>
+  </section>
+
+  <section id="results" class="results" aria-live="polite">
+    <p class="eyebrow">Complete</p>
+    <h2>Quiz finished</h2>
+    <div class="score" id="finalScore"></div>
+    <p id="resultMessage"></p>
+    <button class="restart" id="restartButton">Try again</button>
+  </section>
+</section>
+
+<style>
+  .graphics-quiz{--quiz-ink:#151515;--quiz-muted:#6d6a67;--quiz-line:#dedbd7;--quiz-paper:#fff;--quiz-accent:#C49A6C;--quiz-accent-soft:#f7efe6;--quiz-correct:#28754c;--quiz-correct-soft:#edf7f1;--quiz-incorrect:#9b342d;--quiz-incorrect-soft:#fff1ef;margin:34px 0 10px;overflow:hidden;background:var(--quiz-paper);border:1px solid var(--quiz-line);border-top:3px solid var(--quiz-accent);border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,.035);color:var(--quiz-ink)}
+  .graphics-quiz button{font:inherit}
+  .quiz-header{padding:clamp(1.25rem,4vw,2.25rem) clamp(1.25rem,5vw,3rem) 1.25rem;border-bottom:1px solid #e8e3dd}
+  .quiz-header h2{margin:0;font-size:clamp(1.55rem,4vw,2.15rem);line-height:1.2}
+  .intro{margin:.75rem 0 0;color:var(--quiz-muted)}
+  .progress-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.4rem;color:var(--quiz-muted);font-size:.9rem;font-weight:650}
+  .progress{height:6px;margin-top:.5rem;overflow:hidden;background:#eee9e3;border-radius:999px}
+  .progress-bar{width:0;height:100%;background:var(--quiz-accent);border-radius:inherit;transition:width .3s ease}
+  .quiz-body{padding:clamp(1.25rem,5vw,3rem);padding-top:1.6rem}
+  .quiz-body h3{margin:0 0 .35rem;font-size:clamp(1.2rem,3vw,1.55rem);line-height:1.3}
+  .hint{margin:0 0 1.2rem;color:var(--quiz-muted);font-size:.94rem}
+  .drawing{position:relative;border:1px solid #d7d1ca;border-radius:12px;background:#fcfbfa;overflow:hidden}
+  .view{position:relative;display:block;width:100%;min-height:205px;padding:0;border:0;background:transparent;color:inherit;cursor:pointer;transition:background .18s ease,box-shadow .18s ease}
+  .view:hover{background:#faf5ef}.view:focus-visible{z-index:2;outline:3px solid var(--quiz-accent);outline-offset:-3px}.view[disabled]{cursor:default}.view[disabled]:hover{background:transparent}.view.is-correct{background:var(--quiz-correct-soft);box-shadow:inset 0 0 0 2px var(--quiz-correct)}.view.is-wrong{background:var(--quiz-incorrect-soft);box-shadow:inset 0 0 0 2px var(--quiz-incorrect)}
+  .view-label{position:absolute;top:.75rem;left:1rem;z-index:1;padding:.2rem .55rem;background:#fff;border:1px solid #ded8d1;border-radius:6px;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .view svg{display:block;width:100%;height:205px}
+  .xy-row{position:relative;display:flex;align-items:center;gap:.65rem;padding:0 .8rem;color:#333;font-family:Georgia,serif;font-size:.82rem;font-style:italic;font-weight:700}.xy-row::before{content:"";flex:1;border-top:2px solid #333}
+  .options{display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem;margin-top:1rem}
+  .answer,.next,.restart{min-height:48px;padding:.7rem 1rem;border:1px solid #bcb4aa;border-radius:9px;background:#fff;color:var(--quiz-ink);cursor:pointer;font-weight:700;transition:border-color .18s ease,background .18s ease,transform .18s ease}
+  .answer:hover:not(:disabled),.restart:hover,.next:hover{border-color:var(--quiz-accent);background:var(--quiz-accent-soft)}.answer:active:not(:disabled),.restart:active,.next:active{transform:translateY(1px)}.answer:focus-visible,.next:focus-visible,.restart:focus-visible{outline:3px solid #d9b98f;outline-offset:2px}.answer:disabled{color:#8a847e;cursor:default}.answer.is-correct{border-color:var(--quiz-correct);background:var(--quiz-correct-soft);color:var(--quiz-correct)}.answer.is-wrong{border-color:var(--quiz-incorrect);background:var(--quiz-incorrect-soft);color:var(--quiz-incorrect)}
+  .feedback{display:none;margin-top:1rem;padding:1rem 1.1rem;border-radius:10px}.feedback.show{display:block}.feedback.correct{border:1px solid #9bc9ae;background:var(--quiz-correct-soft)}.feedback.incorrect{border:1px solid #dfaaa5;background:var(--quiz-incorrect-soft)}.feedback strong{display:block;margin-bottom:.18rem}
+  .next{display:none;margin:1rem 0 0 auto;border-color:#111;background:#111;color:#fff}.next.show{display:block}.next:hover{background:#222;color:#fff}
+  .results{display:none;padding:clamp(2rem,7vw,4rem);text-align:center}.results.show{display:block}.score{width:120px;height:120px;margin:1.5rem auto;display:grid;place-items:center;border:8px solid var(--quiz-accent-soft);border-top-color:var(--quiz-accent);border-radius:50%;color:#9a7147;font-size:1.75rem;font-weight:850}.results p{color:var(--quiz-muted)}.restart{margin-top:.5rem;border-color:var(--quiz-accent);color:#8b633d}
+  :global(.graphics-quiz .projector){stroke:#c8c0b7;stroke-width:1;stroke-dasharray:5 5}
+  :global(.graphics-quiz .feature){fill:none;stroke:#181818;stroke-width:4;stroke-linejoin:round;stroke-linecap:round}
+  :global(.graphics-quiz .surface-fill){fill:rgba(196,154,108,.14)}
+  :global(.graphics-quiz .point){fill:#181818}
+  :global(.graphics-quiz .point-label){fill:#181818;font:700 16px Montserrat,Arial,sans-serif}
+  @media(max-width:620px){.view,.view svg{min-height:175px;height:175px}.options{grid-template-columns:1fr 1fr}.quiz-body{padding-inline:1rem}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<script is:inline>
+(() => {
+  const root = document.getElementById("graphicsQuiz");
+  if (!root || root.dataset.ready === "true") return;
+  root.dataset.ready = "true";
+
+  const line = (x1, y1, x2, y2, a, b) => `
+    <line class="projector" x1="${x1}" y1="0" x2="${x1}" y2="205"/>
+    <line class="projector" x1="${x2}" y1="0" x2="${x2}" y2="205"/>
+    <line class="feature" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>
+    <circle class="point" cx="${x1}" cy="${y1}" r="5"/>
+    <circle class="point" cx="${x2}" cy="${y2}" r="5"/>
+    <text class="point-label" x="${x1 - 21}" y="${y1 + 23}">${a}</text>
+    <text class="point-label" x="${x2 + 10}" y="${y2 - 9}">${b}</text>`;
+
+  const polygon = (points, labels) => {
+    const pointString = points.map(p => p.join(",")).join(" ");
+    const projectors = [...new Set(points.map(p => p[0]))].map(x => `<line class="projector" x1="${x}" y1="0" x2="${x}" y2="205"/>`).join("");
+    const dots = points.map((p, i) => `<circle class="point" cx="${p[0]}" cy="${p[1]}" r="5"/><text class="point-label" x="${p[0] + (i < 2 ? -22 : 10)}" y="${p[1] + (i % 2 ? -10 : 22)}">${labels[i]}</text>`).join("");
+    return `${projectors}<polygon class="feature surface-fill" points="${pointString}"/>${dots}`;
+  };
+
+  const edgeSurface = (xs, y, labels) => {
+    const projectors = xs.map(x => `<line class="projector" x1="${x}" y1="0" x2="${x}" y2="205"/>`).join("");
+    const points = xs.map((x, i) => `<circle class="point" cx="${x}" cy="${y}" r="5"/><text class="point-label" x="${x - 8}" y="${y + (i % 2 ? -13 : 25)}">${labels[i]}</text>`).join("");
+    return `${projectors}<line class="feature" x1="${Math.min(...xs)}" y1="${y}" x2="${Math.max(...xs)}" y2="${y}"/>${points}`;
+  };
+
+  const questions = [
+    {text:"Which view shows line AB in true length?",correct:"plan",elevation:line(220,125,550,125,"A′","B′"),plan:line(220,145,550,62,"A","B"),explanation:"The elevation A′B′ is parallel to XY, so AB is parallel to the horizontal plane. The plan therefore shows AB in true length."},
+    {text:"Which view shows line CD in true length?",correct:"elevation",elevation:line(225,150,545,55,"C′","D′"),plan:line(225,105,545,105,"C","D"),explanation:"The plan CD is parallel to XY, so CD is parallel to the vertical plane. The elevation therefore shows CD in true length."},
+    {text:"Which principal view shows line EF in true length?",correct:"neither",elevation:line(240,150,530,65,"E′","F′"),plan:line(240,65,530,145,"E","F"),explanation:"Neither projection is parallel to XY. EF is oblique to both principal planes, so both views are foreshortened; an auxiliary view is required."},
+    {text:"Which view shows line GH in true length?",correct:"both",elevation:line(225,105,545,105,"G′","H′"),plan:line(225,105,545,105,"G","H"),explanation:"Both projections are parallel to XY. GH is parallel to both principal planes—and therefore to the XY axis—so it appears in true length in both views."},
+    {text:"Which view shows surface JKLM in true shape?",correct:"plan",elevation:edgeSurface([220,300,550,470],112,["J′","K′","L′","M′"]),plan:polygon([[220,145],[300,55],[550,82],[470,172]],["J","K","L","M"]),explanation:"The elevation is an edge view parallel to XY, showing that the surface is parallel to the horizontal plane. Its plan therefore shows the true shape."},
+    {text:"Which view shows surface PQRS in true shape?",correct:"elevation",elevation:polygon([[220,155],[300,52],[550,72],[470,175]],["P′","Q′","R′","S′"]),plan:edgeSurface([220,300,550,470],108,["P","Q","R","S"]),explanation:"The plan is an edge view parallel to XY, showing that the surface is parallel to the vertical plane. Its elevation therefore shows the true shape."}
+  ];
+
+  let current=0, score=0, answered=false;
+  const el=id=>root.querySelector(`#${id}`);
+  const questionScreen=el("questionScreen"), results=el("results"), questionText=el("questionText"), questionNumber=el("questionNumber"), scoreLabel=el("scoreLabel"), progressBar=el("progressBar"), elevationSvg=el("elevationSvg"), planSvg=el("planSvg"), feedback=el("feedback"), nextButton=el("nextButton");
+  const answerButtons=[...root.querySelectorAll("[data-answer]")], optionButtons=[...root.querySelectorAll(".answer")];
+
+  function loadQuestion(){
+    answered=false;
+    const q=questions[current];
+    questionText.textContent=q.text;
+    questionNumber.textContent=`Question ${current+1} of ${questions.length}`;
+    scoreLabel.textContent=`Score: ${score}`;
+    progressBar.style.width=`${(current/questions.length)*100}%`;
+    elevationSvg.innerHTML=q.elevation; planSvg.innerHTML=q.plan;
+    feedback.className="feedback"; feedback.textContent="";
+    nextButton.className="next";
+    answerButtons.forEach(button=>{button.disabled=false;button.classList.remove("is-correct","is-wrong");});
+  }
+
+  function choose(choice){
+    if(answered)return;
+    answered=true;
+    const q=questions[current], isCorrect=choice===q.correct;
+    if(isCorrect)score++;
+    answerButtons.forEach(button=>{button.disabled=true;});
+    optionButtons.find(button=>button.dataset.answer===q.correct)?.classList.add("is-correct");
+    optionButtons.find(button=>button.dataset.answer===choice)?.classList.add(isCorrect?"is-correct":"is-wrong");
+    if(choice==="plan"||choice==="elevation")root.querySelector(`.view[data-answer="${choice}"]`)?.classList.add(isCorrect?"is-correct":"is-wrong");
+    if(q.correct==="plan"||q.correct==="elevation")root.querySelector(`.view[data-answer="${q.correct}"]`)?.classList.add("is-correct");
+    feedback.className=`feedback show ${isCorrect?"correct":"incorrect"}`;
+    feedback.innerHTML=`<strong>${isCorrect?"Correct.":"Not quite."}</strong>${q.explanation}`;
+    scoreLabel.textContent=`Score: ${score}`;
+    nextButton.textContent=current===questions.length-1?"See results":"Next question";
+    nextButton.className="next show";
+    nextButton.focus();
+  }
+
+  answerButtons.forEach(button=>button.addEventListener("click",()=>choose(button.dataset.answer)));
+  nextButton.addEventListener("click",()=>{
+    current++;
+    if(current<questions.length){loadQuestion();questionText.focus();}
+    else{
+      questionScreen.hidden=true;results.classList.add("show");el("finalScore").textContent=`${score}/${questions.length}`;
+      const percentage=score/questions.length;
+      el("resultMessage").textContent=percentage===1?"Excellent—every projection relationship was identified correctly.":percentage>=.67?"Good work. Review the feedback for any relationship that was missed.":"Review the XY-line rules, then try again to reinforce the projection relationships.";
+      el("restartButton").focus();
+    }
+  });
+  el("restartButton").addEventListener("click",()=>{current=0;score=0;results.classList.remove("show");questionScreen.hidden=false;loadQuestion();});
+  loadQuestion();
+})();
+</script>

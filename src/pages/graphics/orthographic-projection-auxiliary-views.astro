@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
+import GraphicsQuiz from '../../components/GraphicsQuiz.astro';
+const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout active="Graphics" title="Orthographic Projection and Auxiliary Views">
   <Hero title="Orthographic Projection & Auxiliary Views" subtitle="From orthographic projection to true shape" />
@@ -15,7 +17,9 @@ import Hero from '../../components/Hero.astro';
       <p>Understanding how to move systematically from an ordinary orthographic view to a view showing true length, edge view, point view or true shape is therefore one of the most important skills in plane and descriptive geometry.</p>
     </header>
 
-    <div class="image-placeholder"><span>Image / diagram placeholder 1</span></div>
+    <figure class="lesson-figure">
+      <img src={`${base}assets/graphics/orthographic-auxiliary/01-overview-image.png`} alt="Overview diagram for orthographic projection and auxiliary views." loading="lazy" />
+    </figure>
 
     <section class="lesson-section">
       <h2><span>1</span> Orthographic Projection: Looking Perpendicular to a Plane</h2>
@@ -27,7 +31,9 @@ import Hero from '../../components/Hero.astro';
       <p>The geometry that appears in that view depends entirely on how the object is oriented relative to that plane.</p>
     </section>
 
-    <div class="image-placeholder"><span>Image / diagram placeholder 2</span></div>
+    <figure class="lesson-figure">
+      <img src={`${base}assets/graphics/orthographic-auxiliary/02-orthographic-projection.png`} alt="Orthographic projection diagram illustrating projection onto principal planes." loading="lazy" />
+    </figure>
 
     <section class="lesson-section">
       <h2><span>2</span> First-Angle Projection</h2>
@@ -39,7 +45,9 @@ import Hero from '../../components/Hero.astro';
       <aside class="key-idea"><strong>Key idea:</strong> The location of a view on the sheet tells us the direction from which the object has been projected.</aside>
     </section>
 
-    <div class="image-placeholder"><span>Image / diagram placeholder 3</span></div>
+    <figure class="lesson-figure">
+      <img src={`${base}assets/graphics/orthographic-auxiliary/03-first-angle-projection.png`} alt="First-angle projection diagram showing the relationship between principal views." loading="lazy" />
+    </figure>
 
     <section class="lesson-section">
       <h2><span>3</span> What a Projection Does to Geometry</h2>
@@ -52,7 +60,9 @@ import Hero from '../../components/Hero.astro';
       <p>These two principles explain much of what follows.</p>
     </section>
 
-    <div class="image-placeholder"><span>Image / diagram placeholder 4</span></div>
+    <figure class="lesson-figure">
+      <img src={`${base}assets/graphics/orthographic-auxiliary/04-projection-foreshortening.png`} alt="Projection diagram illustrating foreshortening." loading="lazy" />
+    </figure>
 
     <section class="lesson-section">
       <h2><span>4</span> Why the Principal Views Are Sometimes Not Enough</h2>
@@ -65,7 +75,9 @@ import Hero from '../../components/Hero.astro';
       <p>An auxiliary view is still an orthographic projection. The difference is simply that we introduce an additional projection plane at a useful orientation rather than restricting ourselves to the principal horizontal and vertical planes.</p>
     </section>
 
-    <div class="image-placeholder"><span>Image / diagram placeholder 5</span></div>
+    <figure class="lesson-figure">
+      <img src={`${base}assets/graphics/orthographic-auxiliary/05-principal-view-limitations.png`} alt="Diagram illustrating the limitations of principal orthographic views for inclined geometry." loading="lazy" />
+    </figure>
 
     <section class="lesson-section">
       <h2><span>5</span> First Auxiliary Views</h2>
@@ -84,7 +96,9 @@ import Hero from '../../components/Hero.astro';
       <p>Thinking in terms of coordinates and distances is much more reliable than attempting to memorise individual constructions.</p>
     </section>
 
-    <div class="image-placeholder"><span>Image / diagram placeholder 6</span></div>
+    <figure class="lesson-figure">
+      <img src={`${base}assets/graphics/orthographic-auxiliary/06-first-auxiliary-view.png`} alt="Diagram illustrating construction of a first auxiliary view." loading="lazy" />
+    </figure>
 
     <section class="lesson-section">
       <h2><span>6</span> True Length of a Line</h2>
@@ -95,7 +109,9 @@ import Hero from '../../components/Hero.astro';
       <p>This is a particularly important transition in descriptive geometry because true length is often not the final objective. Instead, it provides the orientation required to obtain another special view.</p>
     </section>
 
-    <div class="image-placeholder"><span>Image / diagram placeholder 7</span></div>
+    <figure class="lesson-figure">
+      <img src={`${base}assets/graphics/orthographic-auxiliary/07-true-length-line.png`} alt="Diagram illustrating how the true length of a line is obtained." loading="lazy" />
+    </figure>
 
     <section class="lesson-section">
       <h2><span>7</span> From True Length to Point View</h2>
@@ -108,7 +124,9 @@ import Hero from '../../components/Hero.astro';
       <p>A point view may initially appear to be an abstract construction, but it is extremely useful. Once a line has been reduced to a point, spatial relationships involving that line can often be determined much more easily.</p>
     </section>
 
-    <div class="image-placeholder"><span>Image / diagram placeholder 8</span></div>
+    <figure class="lesson-figure">
+      <img src={`${base}assets/graphics/orthographic-auxiliary/08-true-length-to-point-view.png`} alt="Diagram showing the progression from true length to a point view." loading="lazy" />
+    </figure>
 
     <section class="lesson-section">
       <h2><span>8</span> Edge Views of Planes</h2>
@@ -122,7 +140,9 @@ import Hero from '../../components/Hero.astro';
       <p>We therefore have to create the required orientation using auxiliary projections.</p>
     </section>
 
-    <div class="image-placeholder"><span>Image / diagram placeholder 9</span></div>
+    <figure class="lesson-figure">
+      <img src={`${base}assets/graphics/orthographic-auxiliary/09-edge-view-plane.png`} alt="Diagram illustrating an edge view of a plane." loading="lazy" />
+    </figure>
 
     <section class="lesson-section">
       <h2><span>9</span> Second Auxiliary Views</h2>
@@ -136,7 +156,9 @@ import Hero from '../../components/Hero.astro';
       <p>Each projection puts the geometry into a more useful orientation for the next projection.</p>
     </section>
 
-    <div class="image-placeholder"><span>Image / diagram placeholder 10</span></div>
+    <figure class="lesson-figure">
+      <img src={`${base}assets/graphics/orthographic-auxiliary/10-second-auxiliary-view.png`} alt="Diagram illustrating a second auxiliary view." loading="lazy" />
+    </figure>
 
     <section class="lesson-section">
       <h2><span>10</span> Obtaining the True Shape of an Oblique Surface</h2>
@@ -152,7 +174,9 @@ import Hero from '../../components/Hero.astro';
       <aside class="key-idea">To obtain an <strong>edge view</strong>, look along the plane.<br />To obtain <strong>true shape</strong>, look perpendicular to the plane.</aside>
     </section>
 
-    <div class="image-placeholder"><span>Image / diagram placeholder 11</span></div>
+    <figure class="lesson-figure">
+      <img src={`${base}assets/graphics/orthographic-auxiliary/11-true-shape-oblique-surface.png`} alt="Diagram illustrating the true shape of an oblique surface." loading="lazy" />
+    </figure>
 
     <section class="lesson-section">
       <h2><span>11</span> Connecting the Ideas</h2>
@@ -163,8 +187,6 @@ import Hero from '../../components/Hero.astro';
       <p>For example, if a line appears as a point, the viewing direction must be along that line. Similarly, if a surface appears as an edge, the viewing direction lies along the surface.</p>
       <p>The appearance of the geometry therefore tells us something about its orientation in three-dimensional space.</p>
     </section>
-
-    <div class="image-placeholder"><span>Image / diagram placeholder 12</span></div>
 
     <section class="lesson-section">
       <h2><span>12</span> A Better Way to Approach Auxiliary-View Problems</h2>
@@ -192,7 +214,21 @@ import Hero from '../../components/Hero.astro';
       <aside class="key-idea">Try not think of an auxiliary view as changing the object. It changes your viewpoint until the geometric information you need becomes visible.</aside>
     </section>
 
-    <div class="image-placeholder"><span>Image / diagram placeholder 13</span></div>
+    <section class="key-takeaway">
+      <p class="eyebrow">Key Takeaway</p>
+      <h2>One underlying principle</h2>
+      <p>The appearance of geometry in an orthographic view depends on its orientation relative to the plane of projection.</p>
+      <div class="takeaway-grid"><span>parallel line → <strong>true length</strong></span><span>perpendicular line → <strong>point</strong></span><span>parallel plane → <strong>true shape</strong></span><span>perpendicular plane → <strong>edge</strong></span></div>
+      <p>Auxiliary projection is simply the process of introducing new viewing planes until one of these useful relationships is achieved.</p>
+    </section>
+
+
+    <section class="lesson-section quiz-section">
+      <p class="eyebrow">Check your understanding</p>
+      <h2>True Length &amp; True Shape Quiz</h2>
+      <p>Use the six-question self-check below to test how projection relationships determine true length and true shape.</p>
+      <GraphicsQuiz />
+    </section>
 
     <section class="lesson-section further-reading">
       <h2>Further Reading</h2>
@@ -201,12 +237,5 @@ import Hero from '../../components/Hero.astro';
       <p class="muted">Students should use these resources to supplement worked examples rather than treating auxiliary projection as a collection of constructions to memorise.</p>
     </section>
 
-    <section class="key-takeaway">
-      <p class="eyebrow">Key Takeaway</p>
-      <h2>One underlying principle</h2>
-      <p>The appearance of geometry in an orthographic view depends on its orientation relative to the plane of projection.</p>
-      <div class="takeaway-grid"><span>parallel line → <strong>true length</strong></span><span>perpendicular line → <strong>point</strong></span><span>parallel plane → <strong>true shape</strong></span><span>perpendicular plane → <strong>edge</strong></span></div>
-      <p>Auxiliary projection is simply the process of introducing new viewing planes until one of these useful relationships is achieved.</p>
-    </section>
   </article>
 </BaseLayout>
